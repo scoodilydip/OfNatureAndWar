@@ -1,2 +1,2 @@
 # OfNatureAndWar
-t he game 
+t he game (idk how tf github work)
