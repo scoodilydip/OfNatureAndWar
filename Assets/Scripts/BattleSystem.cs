@@ -559,5 +559,17 @@ public class BattleSystem : MonoBehaviour
             button.interactable = false;
     }
 
+// Time gauge
+public enum BattleState { START, BATTLE, WON, LOST }
+
+public class BattleSystem : MonoBehaviour
+{
+    [Header("Time Gauge Settings")]
+    public float maxTimeGuage = 100f;
+    public float maxTimeGuageFillRate = 20f;
+    public GameObject timeGuagePrefab;
+    private Dictionary<GameObject, float> timeGauges = new Dictionary<GameObject, float>();        // Tracks gauge values
+    private Dictionary<GameObject, Slider> timeGaugeSliders = new Dictionary<GameObject, Slider>(); // Tracks gauge UI
+}
 
 }
