@@ -560,16 +560,135 @@ public class BattleSystem : MonoBehaviour
     }
 
 // Time gauge
-public enum BattleState { START, BATTLE, WON, LOST }
-
-public class BattleSystem : MonoBehaviour
+public class TimeGauge : MonoBehaviour
 {
+    #region Singleton
+    public static TimeGauge Instance; // Singleton pattern for easy access to this class instance
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // Optional: Makes the instance persist between scenes
+    }
+    #endregion
+
     [Header("Time Gauge Settings")]
-    public float maxTimeGuage = 100f;
-    public float maxTimeGuageFillRate = 20f;
-    public GameObject timeGuagePrefab;
-    private Dictionary<GameObject, float> timeGauges = new Dictionary<GameObject, float>();        // Tracks gauge values
-    private Dictionary<GameObject, Slider> timeGaugeSliders = new Dictionary<GameObject, Slider>(); // Tracks gauge UI
+    public float currentTime = 0f;
+    public float maxTime = 100f;
+    public float fillSpeed = 30f;
+    public Slider timeGaugeSlider;
+    public bool isGaugePaused = false;
+
+    [Header("Battle References")]
+    public bool isInBattle = false; // Assumes a flag to check if the player is in battle
+    public BattleState state; // Assuming BattleState is an enum defined elsewhere
+    public Transform playerPrefab; // Reference to the player prefab
+    public float playerRadius = 5f; // Detection radius for setting up battle
+    public GameObject cameraPrefab; // Reference to the battle camera
+    public float cameraOffset = 2f; // Camera Y offset
+    public float cameraSize = 5f; // Camera zoom level
+    public Text dialogueText; // Dialogue UI element
+
+    // Additional required fields
+    private Vector3 playerCenter;
+    private int playerTurnsLeft;
+    private int enemyTurnsLeft;
+    private List<GameObject> partyMembersInBattle = new List<GameObject>();
+    private List<GameObject> enemiesInBattle = new List<GameObject>();
+
+    void Update()
+    {
+        if (!isInBattle || isGaugePaused) return;
+
+        if (currentTime < maxTime)
+        {
+            currentTime += fillSpeed * Time.deltaTime;
+            timeGaugeSlider.value = currentTime / maxTime; // Normalize the slider value
+        }
+        else
+        {
+            if (state == BattleState.PLAYERTURN)
+            {
+                MakeInteractable();
+            }
+        }
+    }
+
+    public void OnAttackButton()
+    {
+        if (state != BattleState.PLAYERTURN || currentTime < maxTime) return;
+
+        StartCoroutine(PlayerAttack());
+    }
+
+    IEnumerator PlayerAttack()
+    {
+        currentTime = 0f;
+        timeGaugeSlider.value = 0f;
+        MakeNonInteractable();
+        yield return new WaitForSeconds(1f); // Add a small delay for the attack action
+        // Perform attack logic here
+    }
+
+    IEnumerator SetUpBattle()
+    {
+        playerCenter = playerPrefab.position;
+
+        var moveBool = playerPrefab.GetComponent<Movement>();
+        moveBool.canMove = false;
+        moveBool.inBattle = true;
+
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(playerCenter, playerRadius);
+
+        float sumOfX = 0f;
+        float sumOfY = 0f;
+        int sumOfObjects = 0;
+
+        foreach (Collider2D collider in colliderArray)
+        {
+            // Placeholder for enemy/party member detection logic
+        }
+
+        currentTime = 0f;
+        timeGaugeSlider.value = 0f;
+        isGaugePaused = false;
+
+        var camera = cameraPrefab;
+        camera.transform.position = new Vector3(sumOfX / sumOfObjects, sumOfY / sumOfObjects - cameraOffset, -10);
+        camera.GetComponent<Camera>().orthographicSize = cameraSize;
+
+        playerTurnsLeft = partyMembersInBattle.Count;
+        enemyTurnsLeft = enemiesInBattle.Count;
+
+        if (enemiesInBattle.Count > 1)
+        {
+            dialogueText.text = "Enemies approach!";
+        }
+        else
+        {
+            dialogueText.text = "An enemy approaches!";
+        }
+
+        MakeNonInteractable();
+        yield return new WaitForSeconds(2f);
+
+        state = BattleState.PLAYERTURN;
+    }
+
+    private void MakeInteractable()
+    {
+        // Logic for enabling UI interaction
+    }
+
+    private void MakeNonInteractable()
+    {
+        // Logic for disabling UI interaction
+    }
 }
 
 }
