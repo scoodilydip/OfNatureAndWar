@@ -27,7 +27,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetKeyDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             print("EPIC BOIEH");
