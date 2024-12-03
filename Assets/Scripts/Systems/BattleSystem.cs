@@ -50,7 +50,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject partyMember3Position;
 
     public int playerRadius = 10;
-    public Vector2 playerCenter;
+    public Vector2 playerCenter, playerBattlePosition;
 
     public BattleState state;
 
@@ -161,8 +161,10 @@ public class BattleSystem : MonoBehaviour
             {
                 partyMembersInBattle.Add(collider2d.gameObject);//Adds all detected allies to list of party members.
 
-                sumOfX += collider2d.transform.position.x;
-                sumOfY += collider2d.transform.position.y;
+                //sumOfX += collider2d.transform.position.x;
+                //sumOfY += collider2d.transform.position.y;
+
+                playerPrefab.transform.position = new Vector2(playerBattlePosition.x, playerBattlePosition.y);
 
                 sumOfObjects += 1;
 
@@ -559,8 +561,14 @@ public class BattleSystem : MonoBehaviour
             button.interactable = false;
     }
 
-// Time gauge
-public class TimeGauge : MonoBehaviour
+    private void OnDrawGizmos() {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(playerCenter, playerRadius);
+    }
+
+    // Time gauge
+    public class TimeGauge : MonoBehaviour
 {
     #region Singleton
     public static TimeGauge Instance; // Singleton pattern for easy access to this class instance
