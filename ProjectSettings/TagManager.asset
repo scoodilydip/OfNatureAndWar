@@ -4,11 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Container
+  - Item
   - Enemy
   - PartyMember
-  - Item
-  - Container
-  - NPC
   layers:
   - Default
   - TransparentFX
@@ -16,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
   - Ground
-  - 
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -43,6 +42,33 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 175931163
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3875103817
+    locked: 0
+  - name: Building
+    uniqueID: 154636397
+    locked: 0
+  - name: Lightning
+    uniqueID: 1012087361
+    locked: 0
+  - name: Player
+    uniqueID: 1444064995
+    locked: 0
+  - name: Enemy
+    uniqueID: 3493927041
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3292430895
+    locked: 0
+  - name: Text
+    uniqueID: 2675480253
+    locked: 0
+  - name: Foreground
+    uniqueID: 1182567081
     locked: 0
