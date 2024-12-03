@@ -59,7 +59,7 @@ public class FollowTheLeader : MonoBehaviour
         }
         else
         {
-            transform.position = battlePosition.transform.position;
+            //transform.position = battlePosition.transform.position;
         }
     }
 }

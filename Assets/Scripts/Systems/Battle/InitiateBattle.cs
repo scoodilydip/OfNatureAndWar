@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Battle_Manager : MonoBehaviour
 {
@@ -27,13 +28,14 @@ public class Battle_Manager : MonoBehaviour
         {
             print(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
             TriggerBattle();
+
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
         }
        
         
     }
 
-    void TriggerBattle()
-    {
+    void TriggerBattle() {
         print("Function Works");
         startBattle.Invoke();
 

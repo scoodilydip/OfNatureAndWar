@@ -104,7 +104,7 @@ public class BattleSystem : MonoBehaviour
     public Component[] interactable;
     //-------------------------------------------
 
-    public bool isInBattle;
+    public bool isInBattle = false;
 
     void Start()
     {
@@ -132,15 +132,14 @@ public class BattleSystem : MonoBehaviour
         moveBool.inBattle = true;
 
 
-        
+
         Collider2D[] colliderArray = Physics2D.OverlapCircleAll(playerCenter, playerRadius);//Creates circle which checks for all colliders around player.
 
         var sumOfX = 0f;
         var sumOfY = 0f;
         var sumOfObjects = 0;
 
-        foreach (Collider2D collider2d in colliderArray)
-        {
+        foreach (Collider2D collider2d in colliderArray) {
             if (collider2d.gameObject.CompareTag("Enemy"))//Will run for every enemy detected.
             {
                 enemiesInBattle.Add(collider2d.gameObject);//Adds all detected enemies to list of enemies.
@@ -151,8 +150,8 @@ public class BattleSystem : MonoBehaviour
                     healthBar.gameObject.SetActive(true);
                 }
 
-                sumOfX += collider2d.transform.position.x;
-                sumOfY += collider2d.transform.position.y;
+                //sumOfX += collider2d.transform.position.x;
+                //sumOfY += collider2d.transform.position.y;
 
                 sumOfObjects += 1;
             }
@@ -164,7 +163,7 @@ public class BattleSystem : MonoBehaviour
                 //sumOfX += collider2d.transform.position.x;
                 //sumOfY += collider2d.transform.position.y;
 
-                playerPrefab.transform.position = new Vector2(playerBattlePosition.x, playerBattlePosition.y);
+                //playerPrefab.transform.position = new Vector2(playerBattlePosition.x, playerBattlePosition.y);
 
                 sumOfObjects += 1;
 
@@ -176,8 +175,7 @@ public class BattleSystem : MonoBehaviour
         //NOTE!!!!! 1/10/24: This whole sysetem was supposed to add all the UI, and set up the party, but I forgot that other
         //people would be put as allies later down the line. It would be much more efficient, and the problem could be fixed
         //by reworking it to make it use for loops instead of if statements, atleast I think so.
-        if (partyCount == 2)
-        {
+        if (partyCount == 2) {
             partyMember2.gameObject.SetActive(true);
 
             partyMember1Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[0].name;
@@ -189,8 +187,7 @@ public class BattleSystem : MonoBehaviour
             //partyMembersInBattle[1].gameObject.transform.position = partyMember2Position.gameObject.transform.position;
         }
 
-        if (partyCount == 3)
-        {
+        if (partyCount == 3) {
             partyMember2.gameObject.SetActive(true);
             partyMember3.gameObject.SetActive(true);
 
@@ -206,12 +203,12 @@ public class BattleSystem : MonoBehaviour
             //partyMembersInBattle[2].gameObject.transform.position = partyMember3Position.gameObject.transform.position;
         }
 
-        var camera = cameraPrefab;
+        /*var camera = cameraPrefab;
 
         camera.transform.position = new Vector3(sumOfX / sumOfObjects, sumOfY / sumOfObjects, -10);
         camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y - cameraOffset, - 10);
 
-        camera.GetComponent<Camera>().orthographicSize = cameraSize;
+        camera.GetComponent<Camera>().orthographicSize = cameraSize;*/
 
 
         playerTurnsLeft = partyMembersInBattle.Count;
@@ -268,6 +265,21 @@ public class BattleSystem : MonoBehaviour
         return target;
 
     }
+
+/*    public void OnGenericAttack(int attackChoice) {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        var unit = currentTurn.GetComponent<Unit>();
+
+        selectedAttackDMG[attackChoice] = unit.attack1DMG;
+        selectedAttack = unit.attack1;
+
+        selectingEnemy = true;
+        selectedEnemy = enemiesInBattle[0];
+
+        createTarget();
+    }*/
 
     public void OnAttack1()
     {

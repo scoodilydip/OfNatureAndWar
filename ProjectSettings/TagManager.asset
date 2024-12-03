@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Enemy
   - PartyMember
+  - Party
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,12 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3875103817
+    locked: 0
+  - name: Items/Chests
+    uniqueID: 433213581
+    locked: 0
+  - name: Battle Ground
+    uniqueID: 172474521
     locked: 0
   - name: Building
     uniqueID: 154636397

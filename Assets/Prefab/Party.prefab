@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 660125107939207359}
   m_Layer: 0
   m_Name: Party
-  m_TagString: Untagged
+  m_TagString: Party
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7329422b33cc9b0439e5bbb9ac7604cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partyMembers: []
+  partyMembers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
