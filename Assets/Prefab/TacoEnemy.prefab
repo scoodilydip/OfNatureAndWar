@@ -488,6 +488,9 @@ GameObject:
   - component: {fileID: 4246206022527705596}
   - component: {fileID: 4246206022527705587}
   - component: {fileID: 4246206022527705597}
+  - component: {fileID: 129467541672109079}
+  - component: {fileID: 4213312867246495894}
+  - component: {fileID: 1579237668719654268}
   m_Layer: 0
   m_Name: TacoEnemy
   m_TagString: Enemy
@@ -626,6 +629,52 @@ MonoBehaviour:
   attack4DMG: 8
   healthBar: {fileID: 6716504563074817395}
   sprite: {fileID: 0}
+--- !u!114 &129467541672109079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246206022527705585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cfbfc098837f348b1ee1fd41b0c654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+--- !u!114 &4213312867246495894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246206022527705585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5197fa8b0b00d62409812c7af89494da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1579237668719654268
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246206022527705585}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4814000850595890737
 GameObject:
   m_ObjectHideFlags: 0

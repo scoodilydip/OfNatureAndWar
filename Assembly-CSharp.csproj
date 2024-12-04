@@ -66,7 +66,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Stats\Unit.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_BattleUI.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerSingleton.cs" />
+    <Compile Include="Assets\Resources\GameAssets.cs" />
     <Compile Include="Assets\Scripts\Stats\Stats.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -76,9 +78,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\FollowTheLeader.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_CharacterBattle.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\NorionIconManager.cs" />
+    <Compile Include="Assets\Scripts\DamageSystem\DamagePopUp.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\Inventory\containerInteraction.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\DialogueManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -86,6 +90,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\Systems\Battle\InitiateBattle.cs" />
     <Compile Include="Assets\Scripts\Stats\Character_Battle.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_CharacterAnim.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -120,6 +125,7 @@
     <Compile Include="Assets\Scripts\Stats\Character_Base.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\Interactable.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Test\Test_Projectile.cs" />
     <Compile Include="Assets\Scripts\Systems\Battle\BattleSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\TriggerCutscene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />

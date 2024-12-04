@@ -20,7 +20,7 @@ public class PartyUI : MonoBehaviour
     
     void Start()
     {
-        updateIcons();
+        //updateIcons();
     }
 
     public void updateIcons()

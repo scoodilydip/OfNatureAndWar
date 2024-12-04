@@ -178,11 +178,11 @@ public class BattleSystem : MonoBehaviour
         if (partyCount == 2) {
             partyMember2.gameObject.SetActive(true);
 
-            partyMember1Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[0].name;
-            partyMember2Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[1].name;
+            //partyMember1Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[0].name;
+            //partyMember2Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[1].name;
 
-            partyMembersInBattle[0].GetComponent<Unit>().healthBar = partyMember1HealthBar;
-            partyMembersInBattle[1].GetComponent<Unit>().healthBar = partyMember2HealthBar;
+            //partyMembersInBattle[0].GetComponent<Unit>().healthBar = partyMember1HealthBar;
+            //partyMembersInBattle[1].GetComponent<Unit>().healthBar = partyMember2HealthBar;
 
             //partyMembersInBattle[1].gameObject.transform.position = partyMember2Position.gameObject.transform.position;
         }
@@ -191,13 +191,13 @@ public class BattleSystem : MonoBehaviour
             partyMember2.gameObject.SetActive(true);
             partyMember3.gameObject.SetActive(true);
 
-            partyMember1Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[0].name;
-            partyMember2Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[1].name;
-            partyMember3Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[2].name;
+            //partyMember1Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[0].name;
+            ///partyMember2Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[1].name;
+            //partyMember3Text.GetComponent<TMPro.TextMeshProUGUI>().text = partyMembersInBattle[2].name;
 
-            partyMembersInBattle[0].GetComponent<Unit>().healthBar = partyMember1HealthBar;
+            /*partyMembersInBattle[0].GetComponent<Unit>().healthBar = partyMember1HealthBar;
             partyMembersInBattle[1].GetComponent<Unit>().healthBar = partyMember2HealthBar;
-            partyMembersInBattle[2].GetComponent<Unit>().healthBar = partyMember3HealthBar;
+            partyMembersInBattle[2].GetComponent<Unit>().healthBar = partyMember3HealthBar;*/
 
             //partyMembersInBattle[1].gameObject.transform.position = partyMember2Position.gameObject.transform.position;
             //partyMembersInBattle[2].gameObject.transform.position = partyMember3Position.gameObject.transform.position;
@@ -265,21 +265,6 @@ public class BattleSystem : MonoBehaviour
         return target;
 
     }
-
-/*    public void OnGenericAttack(int attackChoice) {
-        if (state != BattleState.PLAYERTURN)
-            return;
-
-        var unit = currentTurn.GetComponent<Unit>();
-
-        selectedAttackDMG[attackChoice] = unit.attack1DMG;
-        selectedAttack = unit.attack1;
-
-        selectingEnemy = true;
-        selectedEnemy = enemiesInBattle[0];
-
-        createTarget();
-    }*/
 
     public void OnAttack1()
     {

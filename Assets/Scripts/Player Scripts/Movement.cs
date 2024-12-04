@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private Test_CharacterAnim anim;
+    
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -27,16 +29,12 @@ public class Movement : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        anim = GetComponent<Test_CharacterAnim>();
     }
 
-    void Update()
-    {
-        if (canMove && playable)
-        {
-            cam.transform.position = new Vector3(transform.position.x, transform.position.y, -5);
-        } 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+    void Update() {
+        Move();
+        
         if (Input.GetMouseButtonDown(0) && playable)
         {
             /*
@@ -127,6 +125,12 @@ public class Movement : MonoBehaviour
 
     }
 
+    private void LateUpdate() {
+        if (canMove && playable) {
+            cam.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        }
+    }
+
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -141,7 +145,21 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void Move() {
 
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        bool isIdle = movement.x == 0 && movement.y == 0;
+
+        if (isIdle) {
+            rb.velocity = Vector2.zero;
+            anim.PlayIdle();
+        } else {
+            anim.PlayMoveAnim(movement);
+        }
+
+    }
 
     void SetFocus(Interactable newFocus)
     {
