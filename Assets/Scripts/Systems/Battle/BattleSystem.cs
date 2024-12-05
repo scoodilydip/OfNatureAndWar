@@ -113,8 +113,8 @@ public class BattleSystem : MonoBehaviour
 
     public void StartBattle()
     {
-        if(!battleMenu.activeSelf)
-            battleMenu.SetActive(true);
+        /*if(!battleMenu.activeSelf)
+            battleMenu.SetActive(true);*/
         state = BattleState.START;
         isInBattle = true;
         StartCoroutine(SetUpBattle());
