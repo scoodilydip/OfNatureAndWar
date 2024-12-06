@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 665230809482134881}
   - component: {fileID: 7872476884014764946}
   - component: {fileID: 6754029198067161118}
+  - component: {fileID: 6914239540404410166}
   - component: {fileID: 1837572826481753630}
   - component: {fileID: 8605073463749956194}
   - component: {fileID: 6564569740530202134}
@@ -259,6 +260,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6914239540404410166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078828288031423100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b44b0cea98d1064282206dc774d818c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1837572826481753630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +291,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   maxDistance: 2
   inBattle: 0
   playable: 1
