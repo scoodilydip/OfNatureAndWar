@@ -14,12 +14,20 @@ public class LevelSystem : MonoBehaviour {
         currentExp = 0;
         startingExp = 10;
         expToNextLevel[1] = startingExp;
+        expToNextLevel = new int[maxLevel];
     }
 
-    public void Start() {
-        for (int i = 2; i < expToNextLevel.Length; i++) {
-            expToNextLevel[i] += Mathf.FloorToInt(expToNextLevel[i - 1] * 1.05f); 
-        }
+    public int GetCurrentExp() {
+        return currentExp;
+    }
+
+    public int GetExpToNextLevel(int level) {
+        if (level < expToNextLevel.Length) {
+            return expToNextLevel[level];
+        } else {
+            Debug.LogError($"LevelSystem > Not Valid Level: {level}");
+            return level + 1000;
+        }  
     }
 
     public int GetCurrentLvl() {
@@ -27,14 +35,29 @@ public class LevelSystem : MonoBehaviour {
     }
 
     public float GetExpBar() {
-        return (float)currentExp / expToNextLevel[level];
+        if (IsMaxLevel()) {
+            return 1f;
+        } else {
+            return (float)currentExp / GetExpToNextLevel(level);
+        }
+    }
+
+    public bool IsMaxLevel() {
+        return IsMaxLevel(level);
+    }
+
+    public bool IsMaxLevel(int level) {
+        return level == expToNextLevel.Length - 1;
     }
 
     public void AddExperience(int experience) {
-        currentExp += experience;
-        if (level < maxLevel) {
-            while (currentExp >= expToNextLevel[level]) {
-                currentExp -= expToNextLevel[level];
+
+        if (!IsMaxLevel()) {
+
+            currentExp += experience;
+
+            while (!IsMaxLevel() && currentExp >= GetExpToNextLevel(level)) {
+                currentExp -= GetExpToNextLevel(level);
                 level++;
                 //add stat increases
 

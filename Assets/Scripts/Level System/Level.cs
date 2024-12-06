@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
     
-    private LevelSystem levelSystem;
+    private LevelSystemAnim levelSystemAnim;
 
     //[SerializeField] private GameObject pfLvlUpEffect; Move to GameAssets after creating the Object.
 
-    public void SetLevelSystem(LevelSystem levelSystem) { 
-        this.levelSystem = levelSystem;
+    public void SetLevelSystemAnim(LevelSystemAnim levelSystemAnim) { 
+        this.levelSystemAnim = levelSystemAnim;
 
-        levelSystem.OnLevelChanged += LevelSystem_OnLvlChanged;
+        levelSystemAnim.OnLevelChanged += LevelSystem_OnLvlChanged;
     }
 
     private void LevelSystem_OnLvlChanged(object sender, EventArgs e) {

@@ -4,8 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelBarUI : MonoBehaviour {
-
-    private LevelSystem levelSystem;
+    /// <summary>
+    /// So far the level system only works for a single character
+    /// Add list the image, text and is LevelSystem pull from Unit
+    /// Add Party ref to determine number of members to find 
+    /// Add LevelBarUI to the panel that will open at end of battle.
+    /// </summary>
+    private LevelSystemAnim levelSystem;
+    private LevelSystemAnim levelSystemAnim;
 
     private TextMeshProUGUI levelText;
     private Image experienceBarImage;
@@ -25,21 +31,26 @@ public class LevelBarUI : MonoBehaviour {
     private void SetLevel(int level) {
         levelText.text = $"Level: {level + 1}";
     }
-    private void SetLevelSystem(LevelSystem levelSystem) { 
+
+    public void SetLevelSystem(LevelSystemAnim levelSystem) { 
         this.levelSystem = levelSystem;
+    }
 
-        SetLevel(levelSystem.GetCurrentLvl());
-        SetExpBar(levelSystem.GetExpBar());
+    private void SetLevelSystemAnim(LevelSystemAnim levelSystemAnim) { 
+        this.levelSystemAnim = levelSystemAnim;
 
-        levelSystem.OnLevelChanged += LevelSystem_OnLevelUp;
-        levelSystem.OnExpChanged += LevelSystem_OnExpChanged;
+        SetLevel(levelSystemAnim.GetCurrentLvl());
+        SetExpBar(levelSystemAnim.GetCurrentExp());
+
+        levelSystemAnim.OnLevelChanged += LevelSystem_OnLevelUp;
+        levelSystemAnim.OnExpChanged += LevelSystem_OnExpChanged;
     }
 
     private void LevelSystem_OnExpChanged(object sender, EventArgs e) {
-        SetExpBar(levelSystem.GetExpBar());
+        SetExpBar(levelSystemAnim.GetCurrentExp());
     }
 
     private void LevelSystem_OnLevelUp(object sender, EventArgs e) {
-        SetLevel(levelSystem.GetCurrentLvl());
+        SetLevel(levelSystemAnim.GetCurrentLvl());
     }
 }
