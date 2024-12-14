@@ -69,8 +69,6 @@ namespace ArcticWolves_Studio {
 
 
             if (Input.GetKeyDown(KeyCode.A)) enemyIndex++;
-
-
             if (Input.GetKeyDown(KeyCode.D)) enemyIndex--;
             GameObject target = targetIcon;
                 
@@ -111,10 +109,12 @@ namespace ArcticWolves_Studio {
             foreach (var character in party.partyMembers) {
                 playerTeam.Add(character);
                 player.Add(character.GetComponent<Test_CharacterBattle>());
+                
             }
 
             for (int i = 0; i < playerTeam.Count; i++) {
                 playerTeam[i].transform.position = playerPositions[i];
+                player[i].GetComponent<Test_CharacterBattle>().SetUp();
             }
         }
 
@@ -133,6 +133,7 @@ namespace ArcticWolves_Studio {
 
                     for (int i = 0; i < enemyTeam.Count; i++) {
                         enemyTeam[i].transform.position = enemyPositions[i];
+                        enemy[i].GetComponent<Test_CharacterBattle>().SetUp();
                     }
                 }
             }
@@ -165,7 +166,7 @@ namespace ArcticWolves_Studio {
             PlayerAttacks();
         }
 
-        private void PlayerAttacks() {
+        public void PlayerAttacks() {
             int index = GetCurrentPlayer();
             currentPlayer = player[GetCurrentPlayer()];
 
@@ -175,8 +176,10 @@ namespace ArcticWolves_Studio {
                     playerTurns--;
                     index++;
                 }
-                
-                currentPlayer = player[index];
+                if (party.partyMembers.Count > 1) {
+                    currentPlayer = player[index];
+                } else
+                    currentPlayer = player[0];
                 ChooseTeamTurn();
             });       
         }

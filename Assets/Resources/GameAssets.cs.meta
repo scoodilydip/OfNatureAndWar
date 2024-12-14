@@ -3,7 +3,9 @@ guid: 5def3e8a6f1bd1642a90e256301423f0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - p_DamagePopUp: {fileID: 4210090328144288374, guid: 9454390a0b01f454088437a55cdcdcc7, type: 3}
+  - p_Projectile: {fileID: 4214969333188499021, guid: 829f77dacaa114346abc73123c6e016e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

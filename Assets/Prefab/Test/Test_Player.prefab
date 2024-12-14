@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 8605073463749956194}
   - component: {fileID: 6564569740530202134}
   - component: {fileID: 5924401511583321135}
+  - component: {fileID: 3965672264940484646}
   - component: {fileID: 4606191747642580752}
   - component: {fileID: 744221558792758145}
   m_Layer: 0
@@ -346,6 +347,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5197fa8b0b00d62409812c7af89494da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterBase: {fileID: 0}
+  anim: {fileID: 0}
+  healthSystem: {fileID: 0}
+  projectile: {fileID: 7907123650973757946, guid: 1944f883b5d43474799440fa01da14c3, type: 3}
+--- !u!114 &3965672264940484646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078828288031423100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6e98edcc5ee9b49a57f202abc93d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100000
 --- !u!114 &4606191747642580752
 MonoBehaviour:
   m_ObjectHideFlags: 0

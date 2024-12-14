@@ -16,9 +16,12 @@ public class Test_Projectile : MonoBehaviour {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed, offset;
 
+    private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+
+    }
 
     public void SetUp(Vector3 target, float speed) {
-        rb = GetComponent<Rigidbody2D>();
 
         moveSpeed = speed;
         rb.velocity = target * moveSpeed;

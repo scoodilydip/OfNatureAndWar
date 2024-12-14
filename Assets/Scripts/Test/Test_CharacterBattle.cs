@@ -5,10 +5,10 @@ public class Test_CharacterBattle : MonoBehaviour {
 
     private Action slideComplete;
 
-    private Character_Base characterBase;
-    private Test_CharacterAnim anim;
-    private HealthSystem healthSystem;
-    //private GameObject selectionCircle; for later
+    [SerializeField] private Character_Base characterBase;
+    [SerializeField] private Test_CharacterAnim anim;
+    [SerializeField] private HealthSystem healthSystem;
+    [SerializeField] private GameObject projectile;
 
     private bool isPlayerTeam;
 
@@ -53,7 +53,7 @@ public class Test_CharacterBattle : MonoBehaviour {
 
     public void SetUp() {
 
-        healthSystem = GetComponentInChildren<HealthSystem>();
+        healthSystem = GetComponent<HealthSystem>();
         PlayIdleAnim();
     }
 
@@ -70,7 +70,7 @@ public class Test_CharacterBattle : MonoBehaviour {
 
         Vector3 attackPosition = (GetPosition() - attacker.GetPosition()).normalized;
         bool isCrit = UnityEngine.Random.Range(0, 100) < 30;
-        DamagePopUp.Create(GetPosition(), dmg, isCrit);
+        //DamagePopUp.Create(GetPosition(), dmg, isCrit);
     }
 
     public bool IsDead() {
@@ -115,7 +115,9 @@ public class Test_CharacterBattle : MonoBehaviour {
         anim.PlayIdle(startingPos);
         state = State.Busy;
         anim.PlayAttackAnim(attackDir, () => {
-            Test_Projectile.Create(GetPosition(), attackDir, 5f);
+            //Test_Projectile.Create(GetPosition(), attackDir, 5f);
+            GameObject moveProjectile = Instantiate(projectile, startingPos, transform.rotation);
+            moveProjectile.GetComponent<ProjectileController>().MoveProjectile(attackDir);
             int dmg = UnityEngine.Random.Range(20, 50);
             targetCharacter.Damage(this, dmg);
             

@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour {
 
     public event EventHandler OnHealthChanged, OnDead;
 
-    private int health, maxHealth;
+    [SerializeField] private int health, maxHealth;
 
     public HealthSystem(int maxHealth) {
         this.maxHealth = maxHealth;
@@ -27,6 +27,10 @@ public class HealthSystem : MonoBehaviour {
 
     private void Awake() {
         instance = this;
+    }
+
+    private void Start() {
+        health = maxHealth;
     }
 
     public float GetHealthPercent() {

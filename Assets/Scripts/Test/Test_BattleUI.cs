@@ -32,27 +32,12 @@ public class Test_BattleUI : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-
-       /* if (Input.GetMouseButtonDown(0) && numberOfAttacks < 2) {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), -Vector2.up, layer);
-            Debug.Log(hit.ToString());
-
-            if (hit.collider. == null) {
-                return;
-            }
-            GameObject hitObject = hit.collider.gameObject;
-
-            if (hitObject.CompareTag("Attack")) {
-                attackList.Add(hitObject);
-                numberOfAttacks++;
-            }
-        }*/
         
     }
 
     private void UpdateAllUI() {
         UpdateUILists(battleManager.playerTeam);
-        GetPlayerAttacks();
+        GetPlayerUIAttacks();
     }
 
     private void UpdateUILists(List<GameObject> list) {
@@ -92,7 +77,7 @@ public class Test_BattleUI : MonoBehaviour {
 
     }
 
-    public void GetPlayerAttacks() {
+    public void GetPlayerUIAttacks() {
 
         int selected = battleManager.GetCurrentPlayer();
 
@@ -103,4 +88,12 @@ public class Test_BattleUI : MonoBehaviour {
         attackText[2].text = stats.attack3;
         attackText[3].text = stats.attack4;
     }
+
+    /*public void AttackSelection(int index) {
+        int selected = battleManager.GetCurrentPlayer();
+
+        foreach (var attack in ) {
+
+        }
+    }*/
 }
