@@ -26,7 +26,7 @@ public class Stats : MonoBehaviour {
     }
     private void Start() {
         //make the stats
-        AssignStatsBasedOnType;
+        AssignStatsBasedOnType(type);
     }
 
     private void AssignStatsBasedOnType(Type entityTpye) {
@@ -56,7 +56,7 @@ public class Stats : MonoBehaviour {
     }
 
     private void TypeBonus() {
-        if (Type != Type.NONE) {
+        if (type != Type.NONE) {
             switch (type) {
                 case Type.Player:
                 //Add bonus for Player
