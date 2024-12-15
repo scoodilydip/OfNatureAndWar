@@ -9,6 +9,7 @@ public class Test_CharacterBattle : MonoBehaviour {
     [SerializeField] private Test_CharacterAnim anim;
     [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform firePosition;
 
     private bool isPlayerTeam;
 
@@ -116,8 +117,8 @@ public class Test_CharacterBattle : MonoBehaviour {
         state = State.Busy;
         anim.PlayAttackAnim(attackDir, () => {
             //Test_Projectile.Create(GetPosition(), attackDir, 5f);
-            GameObject moveProjectile = Instantiate(projectile, startingPos, transform.rotation);
-            moveProjectile.GetComponent<ProjectileController>().MoveProjectile(attackDir);
+            GameObject moveProjectile = Instantiate(projectile, firePosition.position, transform.rotation);
+            moveProjectile.GetComponent<ProjectileController>().MoveProjectile(targetCharacter.GetPosition());
             int dmg = UnityEngine.Random.Range(20, 50);
             targetCharacter.Damage(this, dmg);
             

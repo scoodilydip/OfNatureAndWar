@@ -16,14 +16,17 @@ public class ProjectileController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        other.GetComponent<HealthSystem>().OnDamage(damage);
-        Destroy(gameObject);
+        
+        if (other.CompareTag("Enemy")) {
+            other.GetComponent<HealthSystem>().OnDamage(damage);
+        }
+        Destroy(this);
     }
 
     public void MoveProjectile(Vector3 target) {
 
         rb.velocity = target * speed;
-
+        transform.position = Vector3.MoveTowards(transform.position, target, speed);
         Vector3 direction = transform.position - target;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + offset;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);

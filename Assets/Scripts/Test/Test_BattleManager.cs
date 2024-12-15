@@ -61,12 +61,6 @@ namespace ArcticWolves_Studio {
         }
 
         private void Update() {
-            if (turn == Turn.PlayerTurn) {
-                turn = Turn.Busy;
-                
-            }
-
-
 
             if (Input.GetKeyDown(KeyCode.A)) enemyIndex++;
             if (Input.GetKeyDown(KeyCode.D)) enemyIndex--;
@@ -79,7 +73,12 @@ namespace ArcticWolves_Studio {
                 enemyIndex = 0;
             }
             currentEnemy = enemy[enemyIndex];
-            target.transform.position = currentEnemy.transform.position;
+            if(currentEnemy != null)
+                target.transform.position = currentEnemy.transform.position;
+            else {
+                enemyIndex++;
+                target.transform.position = currentEnemy.transform.position;
+            }
             
         }
 
@@ -161,7 +160,7 @@ namespace ArcticWolves_Studio {
                 return;
 
             GameObject target = targetIcon;
-            Destroy(target);
+            
 
             PlayerAttacks();
         }
