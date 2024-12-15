@@ -26,6 +26,55 @@ public class Stats : MonoBehaviour {
     }
     private void Start() {
         //make the stats
-        
+        AssignStatsBasedOnType;
     }
+
+    private void AssignStatsBasedOnType(Type entityTpye) {
+        switch (entityTpye) {
+            case Type.Player:
+            stats = Resources.Load<StatsSO>("PlayerStats");
+            break; 
+            case Type.Tank:
+            stats = Resources.Load<StatsSO>("TankStats");
+            break;
+            case Type.Mage:
+            stats = Resources.Load<StatsSO>("MageStats");
+            break;
+            case Type.Ranger:
+            stats = Resources.Load<StatsSO>("RangerStats");
+            break;
+            case Type.NPC:
+            stats = Resources.Load<StatsSO>("NPCStats");
+            break;
+            case Type.Merchant:
+            stats = Resources.Load<StatsSO>("MerchantStats");
+            break;
+            default: 
+            stats = null;
+            break;
+        }
+    }
+
+    private void TypeBonus() {
+        if (Type != Type.NONE) {
+            switch (type) {
+                case Type.Player:
+                //Add bonus for Player
+                break;
+                case Type.Tank:
+                //Add bonus for Tank
+                break;
+                case Type.Mage: 
+                //Add bonus for Mage
+                break;
+                case Type.Ranger:
+                //Add bonus for Ranger
+                break;
+                default: 
+                break;
+
+            }
+        }
+    }
+
 }
