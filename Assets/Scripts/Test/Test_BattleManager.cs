@@ -5,7 +5,7 @@ using UnityEngine.TextCore.Text;
 
 namespace ArcticWolves_Studio {
 
-    public class Test_BattleManager : MonoBehaviour {
+    public class Test_BattleManager : MonoBehaviour, IComparer<Test_CharacterBattle> {
 
         private static Test_BattleManager instance;
         public static Test_BattleManager GetInstance() {
@@ -136,6 +136,8 @@ namespace ArcticWolves_Studio {
                     }
                 }
             }
+            enemy.Sort();
+            enemyTeam.Sort();
         }
 
         public int GetCurrentPlayer() {
@@ -160,8 +162,8 @@ namespace ArcticWolves_Studio {
                 return;
 
             GameObject target = targetIcon;
-            
 
+            Debug.Log(turn);
             PlayerAttacks();
         }
 
@@ -171,36 +173,49 @@ namespace ArcticWolves_Studio {
 
             currentPlayer.AttackProjectile(enemy[GetCurrentEnemy()], () => {
 
-                for (int i = 0; i < playerTeam.Count; i++) {
-                    playerTurns--;
+                for (int i = 0; i < playerTeam.Count - 1; i++) {
                     index++;
                 }
                 if (party.partyMembers.Count > 1) {
                     currentPlayer = player[index];
                 } else
                     currentPlayer = player[0];
+                playerTurns--;
                 ChooseTeamTurn();
-            });       
+            });
+            Debug.Log(turn);
+            Debug.Log(playerTurns);
         }
 
         private void EnemyAttack() {
             int playerPosition = Random.Range(0, playerTeam.Count);
+            int index = GetCurrentEnemy();
+            currentEnemy = enemy[index];
 
-            for (int i = 0; i < player.Count; i++) {
-                enemy[i].TestAttack(player[playerPosition], () => {
-                    enemyTurns--;
-                    ChooseTeamTurn(); });
-            }            
+            currentEnemy.TestAttack(player[playerPosition], () => {
+
+                for (int i = 0; i < enemyTeam.Count; i++) {
+                index++;
+                }
+                if (index > enemyTeam.Count - 1) {
+                    currentEnemy = enemy[index];
+                } else
+                    currentEnemy = enemy[0];
+                enemyTurns--;
+                ChooseTeamTurn(); 
+            });          
+            Debug.Log(turn);
         }
 
         private void ChooseTeamTurn() {
+            Debug.Log("Entered Choose Team");
             if (IsBattleOver()) {
                 return;
             }
-            if (playerTurns < 0) {
+            if (playerTurns <= 0) {
                 turn = Turn.Busy;
                 EnemyAttack();
-            } else {
+            } else if (enemyTurns <= 0){
                 turn = Turn.PlayerTurn;
                 playerTurns = playerTeam.Count;
                 enemyTurns = enemyTeam.Count;
@@ -220,5 +235,18 @@ namespace ArcticWolves_Studio {
             }
             return false;
         }
+
+        /*public int Compare(Test_CharacterBattle x, Test_CharacterBattle y) {
+            return x.CompareTo(y)
+        }
+        public int CompareTo(Test_CharacterBattle character) {
+            if (character == null) {
+                return 0;
+            } else
+                return 
+        }
+        nees to implement a camparison to sort the all of the lists. 
+        This will drastically help with index out of bounds errors
+         */
     }
 }
